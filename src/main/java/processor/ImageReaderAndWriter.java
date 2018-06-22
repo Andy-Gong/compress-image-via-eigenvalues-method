@@ -1,7 +1,9 @@
+package processor;
+
 import java.awt.image.BufferedImage;
-import java.awt.image.Raster;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javax.imageio.ImageIO;
 
@@ -31,5 +33,13 @@ public class ImageReaderAndWriter {
             }
         }
         ImageIO.write(image, "png", new File(outputFile));
+    }
+
+    public static void main(String[] args) throws IOException, URISyntaxException {
+        ImageReaderAndWriter reader = new ImageReaderAndWriter();
+        int[][] pixel = reader.read("lenna.png");
+        System.out.println(pixel.length);
+        System.out.println(pixel[0].length);
+        reader.write(pixel, "/tmp/lenabackup.png");
     }
 }
