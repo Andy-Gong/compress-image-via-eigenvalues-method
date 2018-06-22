@@ -1,15 +1,13 @@
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 
 public class Application {
-    public static void main(String[] args) throws IOException {
-        ImageReader reader = new ImageReader();
+    public static void main(String[] args) throws IOException, URISyntaxException {
+        ImageReaderAndWriter reader = new ImageReaderAndWriter();
         int[][] pixel = reader.read("lena.png");
-        for (int x = 0; x < pixel.length; x++) {
-            for (int y = 0; y < pixel[0].length; y++) {
-                System.out.println(pixel[x][y]);
-            }
-        }
-
+        System.out.println(pixel.length);
+        System.out.println(pixel[0].length);
+        reader.write(pixel, "/tmp/lenabackup.png");
     }
 }
