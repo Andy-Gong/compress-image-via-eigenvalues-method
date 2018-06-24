@@ -9,37 +9,39 @@ import javax.imageio.ImageIO;
 
 public class ImageReaderAndWriter {
 
-    public int[][] read(String filePath) throws IOException {
-        BufferedImage image = ImageIO.read(getClass().getClassLoader().getResource(filePath));
-        int row = image.getHeight();
-        int column = image.getWidth();
+    public BufferedImage getImage(String filePath) throws IOException {
+        return ImageIO.read(getClass().getClassLoader().getResource(filePath));
+    }
+
+    public int[][] getPixels(BufferedImage bufferedImage) throws IOException {
+        int row = bufferedImage.getHeight();
+        int column = bufferedImage.getWidth();
         int[][] pixels = new int[row][column];
-        for (int x = 0; x < row; x++) {
-            for (int y = 0; y < column; y++) {
-                pixels[x][y] = image.getRGB(x, y);
+        for (int y = 0; y < row; y++) {
+            for (int x = 0; x < column; x++) {
+                pixels[y][x] = bufferedImage.getRGB(x, y);
             }
         }
         return pixels;
     }
 
-    public void write(int[][] pixelsRGB, String outputFile) throws IOException {
+    public void write(int[][] pixelsRGB, String formatName, int type, String outputFile) throws IOException {
         int width = pixelsRGB[0].length;
         int height = pixelsRGB.length;
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage image = new BufferedImage(width, height, type);
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 int pixelRGB = pixelsRGB[i][j];
-                image.setRGB(i, j, pixelRGB);
+                image.setRGB(j, i, pixelRGB);
             }
         }
-        ImageIO.write(image, "png", new File(outputFile));
+        ImageIO.write(image, formatName, new File(outputFile));
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         ImageReaderAndWriter reader = new ImageReaderAndWriter();
-        int[][] pixel = reader.read("lenna.png");
-        System.out.println(pixel.length);
-        System.out.println(pixel[0].length);
-        reader.write(pixel, "/tmp/lenabackup.png");
+        BufferedImage image = reader.getImage("lenna.png");
+        int[][] pixel = reader.getPixels(image);
+        reader.write(pixel, "png", image.getType(), "/tmp/lenabackup.png");
     }
 }

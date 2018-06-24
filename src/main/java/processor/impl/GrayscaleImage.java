@@ -3,6 +3,7 @@ package processor.impl;
 import processor.ImageProcess;
 import processor.ImageReaderAndWriter;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class GrayscaleImage implements ImageProcess {
@@ -27,8 +28,9 @@ public class GrayscaleImage implements ImageProcess {
 
     public static void main(String[] args) throws IOException {
         ImageReaderAndWriter reader = new ImageReaderAndWriter();
-        int[][] pixel = reader.read("220px-Lenna.png");
+        BufferedImage image = reader.getImage("220px-Lenna.png");
+        int[][] pixel = reader.getPixels(image);
         ImageProcess processor = new GrayscaleImage();
-        reader.write(processor.process(pixel), "/tmp/lennagray.png");
+        reader.write(processor.process(pixel), "png", image.getType(), "/tmp/lennagray.png");
     }
 }
