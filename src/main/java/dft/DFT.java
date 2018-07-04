@@ -17,7 +17,7 @@ public class DFT {
         return output;
     }
 
-    public Complex[] dftInverse(Complex[] input) {
+    public Complex[] inverse(Complex[] input) {
         int length = input.length;
         Complex[] output = new Complex[length];
         for (int k = 0; k < length; k++) {
@@ -42,7 +42,7 @@ public class DFT {
             System.out.println(output[i]);
         }
 
-        Complex[] inverseResult = dft.dftInverse(output);
+        Complex[] inverseResult = dft.inverse(output);
         for (int i = 0; i < input.length; i++) {
             System.out.println(inverseResult[i]);
         }
