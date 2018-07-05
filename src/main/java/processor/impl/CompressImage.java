@@ -13,20 +13,24 @@ import java.util.List;
 public class CompressImage {
 
     /**
-     * Compress a RGB image.
+     * Compress a RGB image via Fast Fourier Transform Algorithm.
+     * <p>
+     * It mainly includes 3 steps:
      * 1. Split RGB data to 4 levels: alpha, red, green, blue.
      * 2. Compress 4 level data 64 times separately.
      * 3. Combine 4 level data to a RGB value.
      *
-     * @param pixelRGB
-     * @return
+     * @param pixelRGB, size is N x M
+     * @return int[][] compressed pixels values, and size is N/8 X M/8
      */
     public int[][] process(int[][] pixelRGB) {
+        int rowRate = 8;
+        int columnRate = 8;
         int originalRow = pixelRGB.length;
         int originalColumn = pixelRGB[0].length;
         //split to 8x8 block
-        int compressRow = pixelRGB.length / 8;
-        int compressColumn = pixelRGB[0].length / 8;
+        int compressRow = pixelRGB.length / rowRate;
+        int compressColumn = pixelRGB[0].length / columnRate;
 
         int[][] valueAlpha = new int[pixelRGB.length][pixelRGB[0].length];
         int[][] valueRed = new int[pixelRGB.length][pixelRGB[0].length];
@@ -47,10 +51,10 @@ public class CompressImage {
 
             }
         }
-        Complex[] compressAlpha = compress64Ratio(valueAlpha);
-        Complex[] compressRed = compress64Ratio(valueRed);
-        Complex[] compressGreen = compress64Ratio(valueGreen);
-        Complex[] compressBlue = compress64Ratio(valueBlue);
+        Complex[] compressAlpha = compress64Ratio(valueAlpha, columnRate, rowRate);
+        Complex[] compressRed = compress64Ratio(valueRed, columnRate, rowRate);
+        Complex[] compressGreen = compress64Ratio(valueGreen, columnRate, rowRate);
+        Complex[] compressBlue = compress64Ratio(valueBlue, columnRate, rowRate);
 
         // convert to image pixel array
         int[][] keepPixels = new int[compressRow][compressColumn];
@@ -67,23 +71,33 @@ public class CompressImage {
     }
 
     /**
-     * Compress image data 64 times, and compress data block is 8x8
+     * Compress image data columnCprRation * rowCprRation times
+     * <p>
+     * The length of return result should be ((row of valueOf2D / row compression rate) * (row of valueOf2D / row compression rate)).
+     * For example,
+     * valueOf2D is 512 X 512,
+     * columnCprRate = 8,
+     * rowCprRate = 8,
+     * <p>
+     * length = 512/8 * 512/8 = 4096
      *
-     * @param valueOf2D
-     * @return
+     * @param valueOf2D     original image data values, like the values of red rate
+     * @param columnCprRate compression rate of column
+     * @param rowCprRate    compression rate of row
+     * @return value of compression result
      */
-    public Complex[] compress64Ratio(int[][] valueOf2D) {
+    public Complex[] compress64Ratio(int[][] valueOf2D, int columnCprRate, int rowCprRate) {
         //split to 8x8 block
-        int row = valueOf2D.length / 8;
-        int column = valueOf2D[0].length / 8;
+        int row = valueOf2D.length / rowCprRate;
+        int column = valueOf2D[0].length / columnCprRate;
         List<Complex[]> vectors = new ArrayList<Complex[]>(row * column);
 
         for (int h = 0; h < row; h++) {
             for (int i = 0; i < column; i++) {
-                Complex[] block = new Complex[8 * 8];
-                for (int j = 0; j < 8; j++) {
-                    for (int k = 0; k < 8; k++) {
-                        block[j * 8 + k] = new Complex(valueOf2D[8 * h + j][8 * i + k]);
+                Complex[] block = new Complex[rowCprRate * columnCprRate];
+                for (int j = 0; j < rowCprRate; j++) {
+                    for (int k = 0; k < columnCprRate; k++) {
+                        block[j * 8 + k] = new Complex(valueOf2D[rowCprRate * h + j][columnCprRate * i + k]);
                     }
                 }
                 vectors.add(block);
