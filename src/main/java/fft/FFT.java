@@ -5,7 +5,7 @@ import org.apache.commons.math3.complex.Complex;
 
 public class FFT {
 
-    public Complex[] fft(Complex[] input) {
+    public static Complex[] fft(Complex[] input) {
         int length = input.length;
         Complex[] output = new Complex[length];
 
@@ -33,7 +33,7 @@ public class FFT {
         return output;
     }
 
-    public Complex[] inverse(Complex[] input) {
+    public static Complex[] inverse(Complex[] input) {
         Complex[] result = internalInverse(input);
         for (int i = 0; i < result.length; i++) {
             result[i] = result[i].divide(result.length);
@@ -41,7 +41,7 @@ public class FFT {
         return result;
     }
 
-    private Complex[] internalInverse(Complex[] input) {
+    private static Complex[] internalInverse(Complex[] input) {
         int length = input.length;
         Complex[] output = new Complex[length];
 
@@ -73,14 +73,13 @@ public class FFT {
         //4 nodes fft
         Complex[] input =
                 new Complex[] {new Complex(4), new Complex(4), new Complex(2), new Complex(2), new Complex(4), new Complex(4), new Complex(2), new Complex(2)};
-        FFT fft = new FFT();
-        Complex[] output = fft.fft(input);
+        Complex[] output = FFT.fft(input);
         System.out.println("FFT result: ");
         for (int i = 0; i < input.length; i++) {
             System.out.println(output[i]);
         }
 
-        Complex[] result = fft.inverse(output);
+        Complex[] result = FFT.inverse(output);
         System.out.println("FFT inverse result: ");
         for (int i = 0; i < result.length; i++) {
             System.out.println(result[i]);

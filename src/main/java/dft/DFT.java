@@ -4,7 +4,7 @@ import org.apache.commons.math3.complex.Complex;
 
 public class DFT {
 
-    public Complex[] dft(Complex[] input) {
+    public static Complex[] dft(Complex[] input) {
         int length = input.length;
         Complex[] output = new Complex[length];
         for (int k = 0; k < length; k++) {
@@ -17,7 +17,7 @@ public class DFT {
         return output;
     }
 
-    public Complex[] inverse(Complex[] input) {
+    public static Complex[] inverse(Complex[] input) {
         int length = input.length;
         Complex[] output = new Complex[length];
         for (int k = 0; k < length; k++) {
@@ -36,13 +36,12 @@ public class DFT {
         Complex[] input =
                 new Complex[] {new Complex(4), new Complex(2), new Complex(2), new Complex(4),
                         new Complex(2), new Complex(2), new Complex(4), new Complex(2)};
-        DFT dft = new DFT();
-        Complex[] output = dft.dft(input);
+        Complex[] output = DFT.dft(input);
         for (int i = 0; i < input.length; i++) {
             System.out.println(output[i]);
         }
 
-        Complex[] inverseResult = dft.inverse(output);
+        Complex[] inverseResult = DFT.inverse(output);
         for (int i = 0; i < input.length; i++) {
             System.out.println(inverseResult[i]);
         }
