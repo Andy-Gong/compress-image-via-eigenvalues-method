@@ -72,7 +72,8 @@ public class FFT {
     public static void main(String[] args) {
         //4 nodes fft
         Complex[] input =
-                new Complex[] {new Complex(4), new Complex(4), new Complex(2), new Complex(2), new Complex(4), new Complex(4), new Complex(2), new Complex(2)};
+                new Complex[] {new Complex(4), new Complex(4), new Complex(2), new Complex(2),
+                        new Complex(4), new Complex(4), new Complex(2), new Complex(2)};
         Complex[] output = FFT.fft(input);
         System.out.println("FFT result: ");
         for (int i = 0; i < input.length; i++) {

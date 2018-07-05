@@ -10,7 +10,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompressImage {
+/**
+ * Compressing image via Fast Fourier Transform Algorithm.
+ * And the compression rate is 64 times: 8x8.
+ */
+public class FFTCompressImage implements ImageProcess {
 
     /**
      * Compress a RGB image via Fast Fourier Transform Algorithm.
@@ -140,7 +144,7 @@ public class CompressImage {
         ImageReaderAndWriter reader = new ImageReaderAndWriter();
         BufferedImage image = reader.getImage("Lenna_color.png");
         int[][] pixel = reader.getPixels(image);
-        CompressImage processor = new CompressImage();
+        FFTCompressImage processor = new FFTCompressImage();
         int[][] result = processor.process(pixel);
         reader.write(result, "png", image.getType(), "compressLenna.png");
     }
