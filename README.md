@@ -1,6 +1,25 @@
 # Includes a lot of transform algorithms
 ## Fourier transform
 ### DFT transform
+The discrete Fourier transform transforms a sequence of N complex numbers {Xn} :=x0,x1,...,x(n-1) into another sequence of complex numbers, {Xk} :=X0,X1,...,X(n-1), which is defined by
+
+![equation](https://github.com/Andy-Gong/transforms/blob/master/src/main/resources/math-equations/DFT-math-equation.png)
+
+The discrete Fourier transform is an invertible, linear transformation. In other words, for any N>0, an N-dimensional complex vector has a DFT and an IDFT which are in turn N-dimensional complex vectors.
+The inverse transform is given by:
+
+![equation](https://github.com/Andy-Gong/transforms/blob/master/src/main/resources/math-equations/IDFT-math-equation.png)
+
+Another way of looking at the DFT is to note that in the above discussion, the DFT can be expressed as the DFT matrix, a Vandermonde matrix, introduced by Sylvester in 1867, DFT matrix is defined by
+
+![equation](https://github.com/Andy-Gong/transforms/blob/master/src/main/resources/math-equations/DFT-matrix.png)
+
+where 
+
+![equation](https://github.com/Andy-Gong/transforms/blob/master/src/main/resources/math-equations/w(n).png)
+
+
+
 ### FFT transform
 ### Performance results between DFT and FFT
 In this test, I use lenna image which is 512x512 and size is 463KB.
