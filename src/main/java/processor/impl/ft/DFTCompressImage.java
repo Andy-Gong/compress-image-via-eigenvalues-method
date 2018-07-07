@@ -40,6 +40,6 @@ public class DFTCompressImage extends AbstractFTImageProcess {
         int[][] result = processor.process(pixel);
         stopWatch.stop();
         LOGGER.info("Image compression time: " + stopWatch.getTime());
-        reader.write(result, "png", image.getType(), "compressLenna1.png");
+        reader.write(result, "png", image.getType(), "DFTCompressLenna.png");
     }
 }
