@@ -25,7 +25,7 @@ where
 In this test, I use lenna image which is 512x512 and size is 463KB.
 DFT and FFT compress the image 64 times.
 
-![alt text](https://github.com/Andy-Gong/transforms/blob/transforms/master/src/main/resources/Lenna_color.png)
+![alt text](https://github.com/Andy-Gong/transforms/blob/master/transforms/src/main/resources/Lenna_color.png)
 
 DFT compression result, which is 64x64 and size is 12KB, it takes 39461 ms.
 
