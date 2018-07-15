@@ -1,9 +1,9 @@
-package processor.impl.ft;
+package ft.processor.impl.ft;
 
-import fft.FFT;
+import ft.fft.FFT;
 import org.apache.commons.lang.time.StopWatch;
 import org.apache.commons.math3.complex.Complex;
-import processor.ImageReaderAndWriter;
+import ft.processor.ImageReaderAndWriter;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

@@ -1,9 +1,9 @@
-package processor.impl.ft;
+package ft.processor.impl.ft;
 
 import com.jcabi.aspects.Loggable;
 import org.apache.commons.math3.complex.Complex;
-import processor.ImageProcess;
-import processor.impl.ImageDecomposeLayers;
+import ft.processor.ImageProcess;
+import ft.processor.impl.ImageDecomposeLayers;
 
 import java.util.ArrayList;
 import java.util.List;

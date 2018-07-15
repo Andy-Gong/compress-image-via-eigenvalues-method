@@ -1,7 +1,7 @@
-package processor.impl;
+package ft.processor.impl;
 
-import processor.ImageProcess;
-import processor.ImageReaderAndWriter;
+import ft.processor.ImageProcess;
+import ft.processor.ImageReaderAndWriter;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

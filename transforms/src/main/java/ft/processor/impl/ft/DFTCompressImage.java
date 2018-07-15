@@ -1,10 +1,10 @@
-package processor.impl.ft;
+package ft.processor.impl.ft;
 
-import dft.DFT;
+import ft.dft.DFT;
 import org.apache.commons.lang.time.StopWatch;
 import org.apache.commons.math3.complex.Complex;
 import org.apache.log4j.Logger;
-import processor.ImageReaderAndWriter;
+import ft.processor.ImageReaderAndWriter;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

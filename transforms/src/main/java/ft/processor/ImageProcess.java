@@ -1,4 +1,4 @@
-package processor;
+package ft.processor;
 
 
 import com.jcabi.aspects.Loggable;

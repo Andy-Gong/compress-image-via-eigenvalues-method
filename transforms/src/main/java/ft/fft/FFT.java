@@ -1,6 +1,5 @@
-package fft;
+package ft.fft;
 
-import dft.DFT;
 import org.apache.commons.math3.complex.Complex;
 
 public class FFT {
@@ -70,7 +69,7 @@ public class FFT {
     }
 
     public static void main(String[] args) {
-        //4 nodes fft
+        //4 nodes ft.dft.fft
         Complex[] input =
                 new Complex[] {new Complex(4), new Complex(4), new Complex(2), new Complex(2),
                         new Complex(4), new Complex(4), new Complex(2), new Complex(2)};

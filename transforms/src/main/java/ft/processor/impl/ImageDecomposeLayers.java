@@ -1,4 +1,4 @@
-package processor.impl;
+package ft.processor.impl;
 
 public class ImageDecomposeLayers {
     private int[][] pixelRGB;

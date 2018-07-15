@@ -1,4 +1,4 @@
-package processor;
+package ft.processor;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
