@@ -1,4 +1,9 @@
 # Includes a lot of transform algorithms
+
+The project includes below transform algorithms:
+. DFT and FFT, and example to compress image
+. Linearsqaures, includes first order linear equation and second order linear equation.
+
 ## Fourier transform
 ### DFT transform
 The discrete Fourier transform transforms a sequence of N complex numbers {Xn} :=x0,x1,...,x(n-1) into another sequence of complex numbers, {Xk} :=X0,X1,...,X(n-1), which is defined by
