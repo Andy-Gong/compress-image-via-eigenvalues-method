@@ -1,8 +1,8 @@
 # Includes a lot of transform algorithms
 
 The project includes below transform algorithms:
-. DFT and FFT, and example to compress image
-. Linearsqaures, includes first order linear equation and second order linear equation.
+- DFT and FFT, and example to compress image.
+- Linearsqaures, includes first order linear equation and second order linear equation.
 
 ## Fourier transform
 ### DFT transform
